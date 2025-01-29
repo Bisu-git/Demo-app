@@ -1,0 +1,40 @@
+<RootWidget>:
+    inputbutton: inputbutton
+    inputcontent: inputcontent
+    outputcontent: outputcontent
+
+    orientation: 'vertical'
+
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint: 1, 0.25
+
+        Label:
+            text: 'Shopping List'
+            size_hint: 1, 0.3
+
+        BoxLayout:
+            orientation: 'horizontal'
+
+            TextInput:
+                id: inputcontent
+                multiline: False
+                size_hint: 0.75, 1  # Adjust size to fit with the button
+
+            Button:
+                id: inputbutton
+                size_hint: 0.25, 1
+                text: 'Add'
+                on_press: root.add_item()
+
+    ListWidget:
+        id: outputcontent
+        viewclass: 'Label'
+        orientation: 'vertical'
+
+        RecycleBoxLayout:
+            default_size: None, dp(56)
+            default_size_hint: 1, None  # Set size_hint_x to 1 for full width
+            size_hint_y: None
+            height: self.minimum_height
+            orientation: 'vertical'
